@@ -28,6 +28,9 @@ int SumOfDigits(int number, int sum){
     {
         sum += number % 10;
         return SumOfDigits(number/10, sum);
+
+        // этот же код в виде тернарного оператора:
+        // return number !=0 ? SumOfDigits (number/10, sum + number%10) : sum;
     }
     return sum;
 }
