@@ -1,17 +1,17 @@
 ﻿// №69: Прога принимает два числа A и B, и возводит А в целую степень B с помощью рекурсии.
 
-int Multiply(int a, int b)
-{
-    if (b ==0) return 1;
-    return a * Multiply(a, b - 1);
-}
-int Promt(string text)
-{
+int Exponentiation(int basis, int degree, int akk){  // Реализация хвостовой рекурсии.
+    if (degree == 0) return akk;             // Для чего введена п-менная аккумулятор.
+    return Exponentiation(basis, degree - 1, akk * basis);
+}   // (ес домножать каждый вызов f-ции на множитель, это ведёт к переполнению стека).
+
+int Promt(string text){
     Console.WriteLine(text);
     return int.Parse(Console.ReadLine()!);
 }
 
-int a = Promt("Введите значение a: ");
-int b = Promt("Введите значение b: ");
+int basis  = Promt("Введите значение основы, возводимой в степень: ");
+int degree = Promt("Введите значение степени: ");
+int akk = 1;
 
-Console.Write($"Число {a} в степени {b} равно: {Multiply(a, b)}.");
+Console.Write($"Число {basis} в степени {degree} равно: {Exponentiation(basis, degree, akk)}.");
