@@ -35,16 +35,18 @@ int SumOfDigits(int number, int sum){
     return sum;
 }
 
-int GetNumber(string message){
-    Console.WriteLine(message);
+double GetNumber(string message)
+{
+    Console.Write(message);
     bool isCorrect = false;
-    int result = 0;
+    double result = 0;
     while (!isCorrect)
-        if (int.TryParse(Console.ReadLine()!, out result))
-            isCorrect = true;
-        else
-            Console.WriteLine("Введено не число (либо не целое число). Повторите ввод.");
-
+        if (double.TryParse(Console.ReadLine()!, out result))
+        {
+            if (result > 0 && result % 1 == 0)  isCorrect = true;
+            else Console.WriteLine("Введено число, но не натуральное. Повторите ввод.");
+        }
+        else Console.WriteLine("Введено не число. Повторите ввод.");
     return result;
 }
 
